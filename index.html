@@ -16,6 +16,11 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px; /* Altura da navegação fixa */
+      }
+
       body {
         font-family: "Poppins", sans-serif;
         line-height: 1.6;
@@ -332,6 +337,12 @@
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(10px);
         margin: 20px 0;
+      }
+
+      /* Seção início ajustada para navegação fixa */
+      #inicio {
+        padding-top: 0;
+        margin-top: 0;
       }
 
       .section:nth-child(even) {
@@ -862,6 +873,8 @@
     </button>
 
     <!-- Header -->
+    <section id="inicio" class="section">
+
     <header>
       <div class="container">
         <div class="header-content">
@@ -903,6 +916,7 @@
     <nav>
       <div class="nav-container">
         <ul class="nav-links">
+          <li><a href="#inicio">Início</a></li>
           <li><a href="#skills">Habilidades</a></li>
           <li><a href="#experience">Experiência</a></li>
           <li><a href="#education">Formação</a></li>
