@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eva Gomes Borges - Engenheira Civil</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+      }
+
+      /* Dark Theme */
+      body.dark-theme {
+        color: #e0e0e0;
+        background: #121212;
+      }
+
+      body.dark-theme .section {
+        background: #1e1e1e;
+      }
+
+      body.dark-theme .skills-grid,
+      body.dark-theme .timeline-item,
+      body.dark-theme .education-card,
+      body.dark-theme .contact-info {
+        background: #2d2d2d;
+        border-color: #444;
+      }
+
+      body.dark-theme .skill-item,
+      body.dark-theme .contact-item {
+        background: #333;
+      }
+
+      body.dark-theme h1,
+      body.dark-theme h2,
+      body.dark-theme h3 {
+        color: #f06292;
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        color: #d81b60;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-theme .theme-toggle {
+        background: rgba(45, 45, 45, 0.9);
+        color: #f06292;
+      }
+
+      /* Additional Dark Theme Styles */
+      body.dark-theme header {
+        background: linear-gradient(135deg, #ad1457 0%, #d81b60 100%);
+      }
+
+      body.dark-theme footer {
+        background: #1a1a1a;
+        border-top: 1px solid #333;
+      }
+
+      body.dark-theme .social-link {
+        background: #333;
+        color: #f06292;
+      }
+
+      body.dark-theme .social-link:hover {
+        background: #f06292;
+        color: #1a1a1a;
+      }
+
+      body.dark-theme .timeline-item::before {
+        background: #f06292;
+      }
+
+      body.dark-theme .timeline-item:hover {
+        background: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #d81b60 0%, #f06292 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="engineering" width="60" height="60" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"><rect x="10" y="10" width="40" height="40"/><line x1="15" y1="20" x2="45" y2="20"/><line x1="15" y1="30" x2="40" y2="30"/><line x1="15" y1="40" x2="35" y2="40"/><circle cx="42" cy="42" r="2"/><rect x="20" y="25" width="8" height="8" fill="rgba(255,255,255,0.05)"/></g></pattern></defs><rect width="100%" height="100%" fill="url(%23engineering)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 30px;
+        border: 5px solid #fff;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        color: #666;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .profile-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .welcome-text {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        opacity: 0.9;
+      }
+
+      .name {
+        font-size: 3em;
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, #fff, #fce4ec);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .title {
+        font-size: 1.5em;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: #bdc3c7;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1em;
+      }
+
+      .contact-item i {
+        font-size: 1.2em;
+        color: #e91e63;
+      }
+
+      /* Navigation */
+      nav {
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        background: #e91e63;
+        color: white;
+      }
+
+      /* Sections */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5em;
+        font-weight: 700;
+        margin-bottom: 60px;
+        color: #ad1457;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: #e91e63;
+        border-radius: 2px;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .skill-category {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        font-size: 3em;
+        color: #e91e63;
+        margin-bottom: 20px;
+      }
+
+      .skill-title {
+        font-size: 1.3em;
+        font-weight: 600;
+        color: #ad1457;
+        margin-bottom: 15px;
+      }
+
+      .skill-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .skill-item {
+        background: #fce4ec;
+        color: #ad1457;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      /* Experience Section */
+      .experience-timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline-item {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        position: relative;
+        border-left: 4px solid #e91e63;
+      }
+
+      .timeline-date {
+        color: #e91e63;
+        font-weight: 600;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+
+      .timeline-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #ad1457;
+        margin-bottom: 5px;
+      }
+
+      .timeline-company {
+        color: #7f8c8d;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .timeline-description {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .timeline-description ul {
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+
+      .timeline-description li {
+        margin-bottom: 5px;
+      }
+
+      /* Education Section */
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .education-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #e91e63;
+      }
+
+      .education-degree {
+        font-size: 1.3em;
+        font-weight: 600;
+        color: #ad1457;
+        margin-bottom: 10px;
+      }
+
+      .education-institution {
+        color: #e91e63;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .education-period {
+        color: #7f8c8d;
+        font-size: 0.9em;
+      }
+
+      /* Footer */
+      footer {
+        background: #ad1457;
+        color: white;
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: #e91e63;
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+      }
+
+      .social-link:hover {
+        transform: scale(1.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .name {
+          font-size: 2.2em;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="profile-img">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQEIJBQ7HuN3DA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1698775223444?e=1760572800&v=beta&t=0YHt33LCXQdB9jWArfzapPcxFKtFnIHQgeVhFvGNHSI"
+              alt="Eva Gomes Borges"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-graduate\' style=\'font-size: 60px; color: #e91e63;\'></i>';"
+            />
+          </div>
+          <p class="welcome-text">Olá, Bem-vindo ao meu portfólio</p>
+          <h1 class="name">Eva Gomes Borges</h1>
+          <h2 class="title">Engenheira Civil</h2>
+          <p class="subtitle">Especialista em Custos e Gestão de Projetos</p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Aracruz-ES</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>(35) 99247-9617</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>evaborges043@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-user"></i>
+              <span>25 anos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li><a href="#skills">Habilidades</a></li>
+          <li><a href="#experience">Experiência</a></li>
+          <li><a href="#education">Formação</a></li>
+          <li><a href="#footer">Informações</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Habilidades Profissionais</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h3 class="skill-title">Desenho Técnico</h3>
+            <div class="skill-items">
+              <span class="skill-item">AutoCAD - Especialista</span>
+              <span class="skill-item">Revit - Iniciante</span>
+              <span class="skill-item">SketchUp - Experiente</span>
+              <span class="skill-item">Cypecad - Iniciante</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h3 class="skill-title">Análise de Custos</h3>
+            <div class="skill-items">
+              <span class="skill-item">Orçamentação</span>
+              <span class="skill-item">Controle de Gastos</span>
+              <span class="skill-item">Análise de Riscos</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3 class="skill-title">Gestão de Projetos</h3>
+            <div class="skill-items">
+              <span class="skill-item">Scrum</span>
+              <span class="skill-item">Cronogramas</span>
+              <span class="skill-item">Metodologia BIM</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="skill-title">Software</h3>
+            <div class="skill-items">
+              <span class="skill-item">Sienge - Experiente</span>
+              <span class="skill-item">MS Office - Experiente</span>
+              <span class="skill-item">Lumina - Experiente</span>
+              <span class="skill-item">Siecon - Experiente</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3 class="skill-title">Construção Civil</h3>
+            <div class="skill-items">
+              <span class="skill-item">Fundações</span>
+              <span class="skill-item">Pré-moldado</span>
+              <span class="skill-item">Pavimentação</span>
+              <span class="skill-item">Terraplenagem</span>
+              <span class="skill-item">Acabamentos</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3 class="skill-title">Normas Técnicas</h3>
+            <div class="skill-items">
+              <span class="skill-item">ABNT NBR</span>
+              <span class="skill-item">Código de Obras</span>
+              <span class="skill-item">CREA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section" style="background: white">
+      <div class="container">
+        <h2 class="section-title">Experiências Profissionais</h2>
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Agosto 2023 - Presente</div>
+            <h3 class="timeline-title">Engenheira de Custos</h3>
+            <div class="timeline-company">Diase Construtora</div>
+            <div class="timeline-description">
+              <p>Responsável pelo desenvolvimento e controle de custos em projetos de grande porte.</p>
+              <ul>
+                <li>Desenvolvimento de controle de custos diretos e indiretos</li>
+                <li>
+                  Desenvolvimento de tendência de custos analisando risco e prevendo possíveis perdas no projeto,
+                  visando a redução de despesas
+                </li>
+                <li>
+                  Análise das composições do orçamento, realizando comparativos entre o orçamento x projeto executivo
+                </li>
+                <li>Desenvolvimento e implantação de controle de insumos (curva A)</li>
+                <li>Elaboração de relatórios financeiros detalhados para tomada de decisão da gerência</li>
+                <li>Desenvolvimento de propostas para redução de custos, visando melhorar a rentabilidade</li>
+                <li>Avaliação estratégica de projetos visando implicações nos custos</li>
+                <li>Validação sistêmica e financeira de pleitos de medições</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Agosto 2022 - Agosto 2023</div>
+            <h3 class="timeline-title">Auxiliar de Custos</h3>
+            <div class="timeline-company">Diase Construtora</div>
+            <div class="timeline-description">
+              <p>Suporte na estimativa e controle de custos de projetos de construção civil.</p>
+              <ul>
+                <li>Auxílio na estimativa de custos</li>
+                <li>Desenvolvimento de controle de gastos</li>
+                <li>Desenvolvimento e implantação de pleito de medição, visando facilitar conferência de escopo</li>
+                <li>
+                  Elaboração de planilha automatizada e online para controle de gastos como: agregados finos e grossos,
+                  concreto, diesel e equipamentos de pequeno porte
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Junho 2021 - Agosto 2022</div>
+            <h3 class="timeline-title">Auxiliar de Engenharia Civil</h3>
+            <div class="timeline-company">Diase Construtora</div>
+            <div class="timeline-description">
+              <p>Apoio técnico em projetos de engenharia civil e acompanhamento de obras.</p>
+              <ul>
+                <li>Auxílio na distribuição de atividades</li>
+                <li>Plotagem de projetos e apoio na leitura e interpretação dos projetos</li>
+                <li>Levantamentos de escopo civil e realização de pleito de medição</li>
+                <li>Preenchimento de ficha de verificação de serviços e materiais</li>
+                <li>Elaboração de planilhas de controle de agregado</li>
+                <li>Acompanhamento de check-list final de obra</li>
+                <li>
+                  Auxílio no acompanhamento e fiscalização das atividades como: Fundações, Pré-moldado, Pavimentação,
+                  Terraplenagem, Acabamentos
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Janeiro 2020 - Junho 2021</div>
+            <h3 class="timeline-title">Estágio - Secretaria de Turismo</h3>
+            <div class="timeline-company">Prefeitura Municipal de Extrema (Estágio)</div>
+            <div class="timeline-description">
+              <p>Estágio na Secretaria de Turismo com foco em projetos e orçamentação.</p>
+              <ul>
+                <li>Auxílio na distribuição de atividades do dia a dia</li>
+                <li>Elaboração de cronogramas de serviço e gestão</li>
+                <li>Elaboração de planilha orçamentária (Setop/Sinapi)</li>
+                <li>Auxílio na elaboração de descritivos</li>
+                <li>Auxílio na elaboração de solicitação de serviço (TRS)</li>
+                <li>Auxílio na execução de processos para aquisição de áreas</li>
+                <li>Auxílio na elaboração de projetos estruturais (Software Autocad)</li>
+                <li>Auxílio na elaboração de projetos 3D (Software Sketchup)</li>
+                <li>Auxílio na verificação de projetos</li>
+                <li>Auxílio no levantamento de materiais</li>
+                <li>Auxílio na verificação de serviços de manutenções</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section" style="background: white">
+      <div class="container">
+        <h2 class="section-title">Formação Acadêmica</h2>
+        <div class="education-grid">
+          <div class="education-card">
+            <h3 class="education-degree">Bacharel em Engenharia Civil</h3>
+            <div class="education-institution">Faculdade de Ciências Sociais e Aplicadas de Extrema (Faex)</div>
+            <div class="education-period">Janeiro 2018 - Dezembro 2022</div>
+          </div>
+
+          <div class="education-card">
+            <h3 class="education-degree">Pós-graduação em Gestão de Custos e Obras com Ferramentas BIM</h3>
+            <div class="education-institution">Instituto Brasileiro de Engenharia de Custos (IBEC)</div>
+            <div class="education-period">Janeiro 2023 - Em andamento</div>
+          </div>
+
+          <div class="education-card">
+            <h3 class="education-degree">Pós-graduação em Engenharia de Custos</h3>
+            <div class="education-institution">Instituto Brasileiro de Engenharia de Custos (IBEC)</div>
+            <div class="education-period">Janeiro 2023 - Em andamento</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="footer" class="section"></section>
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="mailto:evaborges043@gmail.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/eva-gomes-borges-4bb898203?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BmO0WGEMUREOd7tB534DjIg%3D%3D"
+            class="social-link"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://wa.me/553592479617" class="social-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        <p>&copy; 2025 Eva Gomes Borges. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Add scroll effect to navigation
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          nav.style.background = "rgba(255, 255, 255, 0.95)";
+          nav.style.backdropFilter = "blur(10px)";
+        } else {
+          nav.style.background = "#fff";
+          nav.style.backdropFilter = "none";
+        }
+      });
+
+      // Animate cards on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards
+      document.querySelectorAll(".skill-category, .timeline-item, .education-card").forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(card);
+      });
+
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+      const themeIcon = themeToggle.querySelector("i");
+
+      // Check for saved theme preference or default to 'light'
+      const currentTheme = localStorage.getItem("theme") || "light";
+
+      if (currentTheme === "dark") {
+        body.classList.add("dark-theme");
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+      }
+
+      themeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-theme");
+
+        if (body.classList.contains("dark-theme")) {
+          themeIcon.classList.remove("fa-moon");
+          themeIcon.classList.add("fa-sun");
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeIcon.classList.remove("fa-sun");
+          themeIcon.classList.add("fa-moon");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
+  </body>
+</html>

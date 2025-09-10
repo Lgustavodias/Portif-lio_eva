@@ -1,0 +1,26 @@
+📸 INSTRUÇÕES PARA ADICIONAR A FOTO DA EVA
+============================================
+
+Para adicionar a foto da Eva ao portfólio:
+
+1. Salve a foto da Eva que você anexou como:
+   📁 Nome do arquivo: "eva-profile.jpg"
+   📁 Local: c:\Users\Lu-gu\OneDrive\Área de Trabalho\curriculo\assets\eva-profile.jpg
+
+2. A foto será automaticamente exibida no portfólio
+
+3. Recomendações para a foto:
+   ✅ Formato: JPG ou PNG
+   ✅ Tamanho recomendado: 300x300 pixels ou maior
+   ✅ Qualidade: Boa resolução para visualização profissional
+   ✅ A foto será cortada em formato circular automaticamente
+
+4. Se a foto não aparecer, verifique:
+   - Se o nome do arquivo está correto: "eva-profile.jpg"
+   - Se está na pasta correta: assets/
+   - Se não há erro de digitação no nome
+
+5. Caso prefira outro nome de arquivo, edite a linha no HTML:
+   <img src="assets/eva-profile.jpg" alt="Eva Gomes Borges" ...
+
+💡 DICA: A foto que você anexou já tem uma qualidade ótima e será perfeita para o portfólio!
